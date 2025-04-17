@@ -1,0 +1,46 @@
+.Notification__Container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.Notification {
+  width: fit-content;
+  padding: 12px 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease-out;
+  transform: translateX(300%);
+  z-index: 3;
+}
+
+.Notification.animate {
+  transform: translateX(0);
+}
+
+.Notification--info {
+  background-color: color-mix(in lab, var(--accent-color) 70%, transparent 30%);
+}
+
+.Notification--error {
+  background-color: color-mix(in lab, var(--danger-color) 70%, transparent 30%);
+}
+
+.Notification--success {
+  background-color: color-mix(in lab, var(--success-color) 70%, transparent 30%);
+}
+
+@media (prefers-color-scheme: light) {
+  .Notification {
+    color: var(--light-text-color);
+  }
+}

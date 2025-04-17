@@ -1,0 +1,14 @@
+.CreateTodo__Container {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.CreateTodo__Container input {
+  border: solid 1px var(--gray-scale);
+  border-radius: 10px;
+}

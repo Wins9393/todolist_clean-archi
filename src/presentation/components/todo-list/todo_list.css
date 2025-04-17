@@ -1,0 +1,38 @@
+.Todolist__MainContainer {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  height: calc(100vh - var(--header-height) - 10vh);
+  padding: 8px 16px;
+}
+
+.Todolist__Wrapper {
+  flex: 3 1;
+  overflow: scroll;
+  padding: 0 0 16px 0;
+  border: solid 1px #555;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.Todolist--subtasks__Wrapper {
+  flex: 1 3;
+  overflow: scroll;
+  padding: 2px 2px 16px 2px;
+  border: solid 1px #555;
+  border-radius: 12px;
+  height: 100%;
+}
+
+@media screen and (max-width: 840px) {
+  .Todolist__MainContainer {
+    height: 100%;
+    flex-direction: column-reverse;
+    flex: 1;
+  }
+  .Todolist__Wrapper,
+  .Todolist--subtasks__Wrapper {
+    overflow: visible;
+    flex: 1;
+  }
+}
