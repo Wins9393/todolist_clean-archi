@@ -52,9 +52,7 @@ export function TodosList() {
 
   return (
     <div className="Todolist__MainContainer">
-      <Splitter
-        layout={width <= 840 ? "vertical" : "horizontal"}
-        style={{ flex: 1, color: "inherit" }}>
+      <Splitter layout={width <= 840 ? "vertical" : "horizontal"} style={{ flex: 1, color: "inherit" }}>
         <Splitter.Panel defaultSize="70%" min="30%" max="80%">
           <section className="Todolist__Wrapper">
             <ul>
@@ -76,11 +74,7 @@ export function TodosList() {
           <section className="Todolist--subtasks__Wrapper">
             <AddSubTodo currentTodo={currentTodo} />
             <ul>
-              {childrens.map((children) =>
-                children.getIsParent() === false && children.getParentId() !== null ? (
-                  <TodoElement key={children.getId()} todo={children} />
-                ) : null
-              )}
+              {childrens.map((children) => (children.getIsParent() === false && children.getParentId() !== null ? <TodoElement key={children.getId()} todo={children} /> : null))}
             </ul>
           </section>
         </Splitter.Panel>

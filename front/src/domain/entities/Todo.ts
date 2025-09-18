@@ -74,8 +74,7 @@ export class Todo {
   }
 
   public addChildren(children: Todo) {
-    if (this.parentId !== null)
-      throw new Error("Une sous-tâche ne peut pas avoir de sous-tâches !");
+    if (this.parentId !== null) throw new Error("Une sous-tâche ne peut pas avoir de sous-tâches !");
     children.parentId = this.id;
     // this.setIsParent(true);
     this.updated_at = new Date().toISOString();

@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { Todo } from "../domain/entities/Todo";
-import { InLocalStorageTodoRepository } from "../infrastructure/repositories/InLocalStorageTodoRepository";
 import { getAllTodosUseCase } from "../application/use-cases/getAllTodosUseCase";
 import { createTodoUseCase } from "../application/use-cases/createTodoUseCase";
 import { updateTodoUseCase } from "../application/use-cases/updateTodoUseCase";
@@ -8,6 +7,7 @@ import { deleteTodoUseCase } from "../application/use-cases/deleteTodoUseCase";
 import { markTodoAsDoneUseCase } from "../application/use-cases/markTodoAsDoneUseCase";
 import { createChildrenUseCase } from "../application/use-cases/createChildrenUseCase";
 import { getChildrensByParentIdUseCase } from "../application/use-cases/getChildrensByParentIdUseCase";
+import { GraphQLTodoRepository } from "../infrastructure/repositories/GraphQLTodoRepository";
 
 interface ITodosContext {
   todos: Todo[];
@@ -19,7 +19,8 @@ interface ITodosContext {
   addChildren: (parent: Todo, titile: string) => Promise<void>;
 }
 
-const repository = new InLocalStorageTodoRepository();
+// const repository = new InLocalStorageTodoRepository();
+const repository = new GraphQLTodoRepository();
 const getAllTodos = getAllTodosUseCase(repository);
 const createTD = createTodoUseCase(repository);
 const updateTD = updateTodoUseCase(repository);
@@ -86,7 +87,8 @@ export function TodosProvider({ children }: { children: ReactNode }) {
         markTodoAsDone,
         getChildrensByParentId,
         addChildren,
-      }}>
+      }}
+    >
       {children}
     </TodosContext.Provider>
   );

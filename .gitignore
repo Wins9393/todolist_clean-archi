@@ -1,16 +1,40 @@
 # Logs
 logs
+front/logs
+api/logs
+
 *.log
+front/*.log
+api/*.log
+
 npm-debug.log*
+front/npm-debug.log*
+api/npm-debug.log*
+
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+front/node_modules
+api/node_modules
+
 dist
+front/dist
+api/dist
+
 dist-ssr
+front/dist-ssr
+api/dist-ssr
+
 *.local
+front/*.local
+api/*.local
+
+.env
+front/.env
+api/.env
 
 # Editor directories and files
 .vscode/*

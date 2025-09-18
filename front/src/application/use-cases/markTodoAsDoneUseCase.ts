@@ -8,15 +8,14 @@ export function markTodoAsDoneUseCase(todoRepository: TodoRepository) {
     const existingTodo = await todoRepository.findById(id);
     if (!existingTodo) throw new Error("Cette todo n'existe pas !");
 
+    existingTodo.toggleDone(existingTodo.isDone());
+
+    await todoRepository.update(existingTodo);
+
     const parentId = existingTodo.getParentId();
 
     if (parentId !== null) {
-      existingTodo.toggleDone(existingTodo.isDone());
-      syncDoneStatusParent(parentId);
-    } else {
-      existingTodo.toggleDone(existingTodo.isDone());
+      await syncDoneStatusParent(parentId);
     }
-
-    await todoRepository.update(existingTodo);
   };
 }

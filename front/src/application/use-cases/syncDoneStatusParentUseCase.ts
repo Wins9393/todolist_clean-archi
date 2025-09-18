@@ -9,13 +9,7 @@ export function syncDoneStatusParentUseCase(todoRepository: TodoRepository) {
 
     if (childrens.length > 0) {
       const allDone = childrens.every((child) => child.isDone());
-
-      if (allDone) {
-        parentTodo.markTodoAsDone(true);
-      } else {
-        parentTodo.markTodoAsDone(false);
-      }
-
+      parentTodo.markTodoAsDone(allDone);
       await todoRepository.update(parentTodo);
     }
   };
